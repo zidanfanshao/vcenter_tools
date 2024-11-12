@@ -2,33 +2,52 @@ package com.example.vcentertools.model;
 
 import cn.hutool.http.HttpRequest;
 
+
 public class FileUploader {
 
     /**
-     * 上传文件
-     * @param uploadUrl 上传地址
-     * @return 上传结果
+     * @param targetUrl
+     * @param vulnerability
+     * @param filename
+     * @param filetext
+     * @return 执行结果
      */
-    public String uploadFile(String uploadUrl) {
-        String result = "文件上传失败";
+    public String uploadForVulnerabilities(String targetUrl, String vulnerability,String filename,String filetext) {
+        StringBuilder result = new StringBuilder();
 
         try {
-            // 这里假设我们上传一个假设的文件数据
-            String response = HttpRequest.post(uploadUrl)
-                    .form("file", "path/to/file")  // 假设上传一个文件
-                    .execute()
-                    .body();
-
-            // 判断上传是否成功
-            if (response.contains("success")) {
-                result = "文件上传成功";
-            } else {
-                result = "文件上传失败";
+            if ("ALL".equals(vulnerability)) {
+                result.append(" [-] 请选择具体漏洞").append("\n");
+            }else if ("CVE-2021-22005".equals(vulnerability)) {
+                result.append(uploadforCVE202122005(targetUrl,filename,filetext)).append("\n");
+            } else if ("CVE-2021-21972".equals(vulnerability)) {
+                result.append(" [-] 暂未开发").append("\n");
+            } else if ("CVE-2021-21985".equals(vulnerability)) {
+                result.append(" [-] 暂未开发").append("\n");
+            }else {
+                result.append(" [-] 未知漏洞类型\n");
             }
         } catch (Exception e) {
-            result = "上传过程中出现错误: " + e.getMessage();
+            result.append(" [-] 检测过程中发生异常: ").append(e.getMessage()).append("\n");
         }
+        return result.toString();
+    }
 
-        return result;
+
+    /**
+     * CVE-2021-22005 文件上传
+     * @param targetUrl 目标 URL
+     * @param filename 文件内容
+     * @param filetext 文件内容
+     * @return 执行结果
+     */
+
+    private String uploadforCVE202122005(String targetUrl,String filename,String filetext) {
+        try {
+            String res = " [+] 文件上传成功！文件地址为：" + targetUrl + "\\" + filename;
+            return res;
+        }catch (Exception e) {
+            return " [-]" + e.getMessage();
+        }
     }
 }
