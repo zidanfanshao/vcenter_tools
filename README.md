@@ -39,4 +39,4 @@ jdk >= 11.0.1
 
 # 界面
 
-![image-20241112004542765](./assets/qwertyuio.jpg)
+![image-20241112004542765](./assets/qwertyuio.png)
