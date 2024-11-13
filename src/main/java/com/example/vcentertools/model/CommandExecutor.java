@@ -3,7 +3,13 @@ package com.example.vcentertools.model;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import com.example.vcentertools.model.exp.Cve202222954;
+
 public class CommandExecutor {
+
+
+    private Cve202222954 cve202222954;
+
 
     /**
      * @param targetUrl
@@ -13,6 +19,7 @@ public class CommandExecutor {
      */
     public String rceForVulnerabilities(String targetUrl, String vulnerability,String command) {
         StringBuilder result = new StringBuilder();
+        cve202222954 = new Cve202222954();
 
         try {
             if ("ALL".equals(vulnerability)) {
@@ -23,7 +30,9 @@ public class CommandExecutor {
                 result.append(" [-] 暂未开发！").append("\n");
             } else if ("CVE-2021-21985".equals(vulnerability)) {
                 result.append(rceforCVE202121985(targetUrl,command)).append("\n");
-            }else {
+            } else if ("CVE-2022-22954".equals(vulnerability)) {
+                result.append(cve202222954.command_22954(targetUrl,command)).append("\n");
+            } else {
                 result.append(" [-] 未知漏洞类型！\n");
             }
         } catch (Exception e) {
@@ -42,7 +51,7 @@ public class CommandExecutor {
 
     private String rceforCVE202121985(String targetUrl,String command) {
         try {
-            return targetUrl + " [+] 命令执行结果为：123";
+            return " [-] 暂未开发";
         }catch (Exception e) {
             return " [-]" + e.getMessage();
         }

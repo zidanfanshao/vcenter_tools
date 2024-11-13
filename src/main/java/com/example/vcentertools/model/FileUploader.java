@@ -24,6 +24,8 @@ public class FileUploader {
                 result.append(" [-] 暂未开发").append("\n");
             } else if ("CVE-2021-21985".equals(vulnerability)) {
                 result.append(" [-] 暂未开发").append("\n");
+            } else if ("CVE-2022-22954".equals(vulnerability)) {
+                result.append(" [-] 暂未开发").append("\n");
             }else {
                 result.append(" [-] 未知漏洞类型\n");
             }
@@ -44,7 +46,8 @@ public class FileUploader {
 
     private String uploadforCVE202122005(String targetUrl,String filename,String filetext) {
         try {
-            String res = " [+] 文件上传成功！文件地址为：" + targetUrl + "\\" + filename;
+            //String res = " [+] 文件上传成功！文件地址为：" + targetUrl + "\\" + filename;
+            String res = " [-] 暂未开发";
             return res;
         }catch (Exception e) {
             return " [-]" + e.getMessage();
