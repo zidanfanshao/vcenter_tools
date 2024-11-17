@@ -3,6 +3,7 @@ module com.example.vcentertools {
     requires javafx.fxml;
     requires cn.hutool;
     requires java.sql;
+    requires java.net.http;
 
 
     opens com.example.vcentertools to javafx.fxml;

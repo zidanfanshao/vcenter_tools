@@ -1,8 +1,5 @@
 package com.example.vcentertools.model;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import com.example.vcentertools.model.exp.Cve202222954;
 
 public class CommandExecutor {

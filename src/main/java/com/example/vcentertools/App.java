@@ -14,7 +14,7 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/vcentertools/hello-view.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load());
-        primaryStage.setTitle("VCenter 漏洞利用工具v0.3           by:   zidanfanshao  （严禁用于非授权的测试及非法用途）");
+        primaryStage.setTitle("VCenter 漏洞利用工具v0.4           by:   zidanfanshao  （严禁用于非授权的测试及非法用途）");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
